@@ -7,7 +7,6 @@ Resolução: ![veja aqui](/exercicios/exercicio3AlgGenetico/n_queen_guilherme/)
 Para ilustrar este problema, imagine a situação hipotética. Um ladrão entra em uma loja carregando uma mochila (bolsa) que pode carregar 35 kg de peso. A loja possui 10 itens, cada um com peso e preço específicos. Agora, o dilema do ladrão é fazer uma seleção de itens que maximize o valor (ou seja, o preço total) sem exceder o peso da mochila. Temos que ajudar o ladrão a fazer a seleção.
 
 Utilize os seguintes itens para colocar na mochila:
-
 Item Peso Valor
 1 3 266  
 2 13 442  
@@ -19,3 +18,5 @@ Item Peso Valor
 8 8 145  
 9 2 126  
 10 9 322
+
+Resolução: ![veja aqui](/exercicios/exercicio3AlgGenetico/mochila_guilherme/)
