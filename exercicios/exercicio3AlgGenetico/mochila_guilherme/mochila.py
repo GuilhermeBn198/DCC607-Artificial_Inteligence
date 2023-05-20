@@ -1,10 +1,19 @@
 from genetica import *  # Import all functions from the genetica module.
 
 # Define the list of items with their weights and values.
-pesos_e_valores = [[4, 30], [8, 10], [8, 30], [25, 75],
-                   [2, 10], [50, 100], [6, 300], [12, 50],
-                   [100, 400], [8, 300]]
-peso_maximo = 100  # Define the maximum weight the backpack can carry.
+pesos_e_valores = [
+                   [3, 266],
+                   [13, 442],
+                   [10, 671],
+                   [9, 526],
+                   [7, 388],
+                   [1, 245],
+                   [8, 210],
+                   [8, 145],
+                   [2, 126],
+                   [9, 322]
+                   ]
+peso_maximo = 35  # Define the maximum weight the backpack can carry.
 n_de_cromossomos = 150  # Define the number of chromosomes in the population.
 geracoes = 80  # Define the number of generations for the genetic algorithm.
 n_de_itens = len(pesos_e_valores)  # Calculate the number of items available.
