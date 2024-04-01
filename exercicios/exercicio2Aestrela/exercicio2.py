@@ -48,6 +48,7 @@ def a_star(graph, start, end, heuristic_dict):
                 # Calcula o custo total estimado do caminho e adiciona o vizinho à fila de prioridade
                 f = pontuacao_g + heuristic(vizinho, heuristic_dict)
                 heapq.heappush(priority_queue, (f, vizinho))
+                print(f"Caminho atual: {no_atual}")
 
     # Retorna nulo se não encontrar um caminho
     return None, None
@@ -63,8 +64,8 @@ def main():
         heuristic_dict = eval(f.read())
 
     # Define o nó inicial e o nó de destino
-    inicio = "Arad"
-    fim = "Bucharest"
+    inicio = "A"
+    fim = "G"
 
     # Executa o algoritmo A*
     caminho, custo = a_star(romenia_mapa, inicio, fim, heuristic_dict)
