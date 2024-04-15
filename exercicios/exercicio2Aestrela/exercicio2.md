@@ -1,28 +1,71 @@
-# O objetivo da tarefa é implementar o Algoritmo A_Estrela (Algoritmo A\*). O programa deve ser capaz de solucionar o problema do Mapa da Romênia e problemas da mesma classe. A tarefa é individual e deve ser original. Um documento descrevendo a linguagem usada, a versão e o ambiente de execução, deve ser elaborado para orientar usuários a utilizar o programa
+# Relatório sobre a Aplicação do Algoritmo A* para Encontrar o Menor Caminho da minha casa até o Bloco V, CCT
 
-As linguagens empregadas podem ser C, C++, Java, ou Python.
+---
+Kelvin Araújo Ferreira - 2019037653
 
-Importante: Envie o código-fonte e não o executável.
+---
 
-## Resposta
+## Introdução
 
-- O problema do mapa da Romênia é um exemplo clássico de como encontrar o caminho mais curto entre duas cidades em um mapa que mostra as estradas que conectam as cidades. É um problema de busca em um grafo, onde os vértices representam as cidades e as arestas representam as estradas que as ligam.
-- O problema do mapa da Romênia começa com um mapa que mostra as cidades e as estradas que as conectam. Cada estrada tem um comprimento que indica a distância entre as cidades que ela liga. O objetivo do problema é encontrar o caminho mais curto entre duas cidades especificadas no mapa, ou seja, a rota que requer menos tempo ou recursos para ser percorrida. Para resolver esse problema, é necessário percorrer o grafo de maneira eficiente, avaliando as distâncias entre as cidades e escolhendo o caminho mais curto possível.
-- O algoritmo A* é uma técnica de busca heurística que pode ser aplicada para encontrar o caminho mais curto entre dois pontos em um grafo. Ele usa uma heurística para estimar a distância restante do nó atual até o nó de destino, juntamente com a distância já percorrida, para determinar qual nó deve ser explorado a seguir. Essa combinação de informações é usada para escolher o caminho mais eficiente, enquanto explora o grafo de forma inteligente. O algoritmo A* é uma mistura da busca de custo uniforme e da busca heurística informada, tornando-o uma técnica poderosa para resolver problemas de caminhos mais curtos.
-O problema do mapa da Romênia é um exemplo popular usado para demonstrar como o algoritmo A* e outros algoritmos de busca operam. É comumente usado como um problema padrão para avaliar a eficiência de diferentes algoritmos de busca. Para resolvê-lo, podemos seguir os passos necessários para encontrar o caminho mais curto entre duas cidades na Romênia, usando o mapa com as estradas que as conectam.
+Este relatório descreve a abordagem adotada para aplicar o algoritmo A* com o objetivo de encontrar o menor caminho até o Bloco V, CCT, utilizando as bibliotecas NetworkX, Matplotlib e OSMnx. O algoritmo A* é uma técnica eficaz para encontrar o caminho mais curto entre dois pontos em um grafo ponderado, considerando tanto o custo do movimento quanto uma heurística que estima o custo restante até o destino.
 
-## Dos passos para se resolver o problema
+---
 
-1. Para resolver o problema do mapa da Romênia, é necessário representar as cidades e as estradas que as conectam em forma de um grafo. Nesse grafo, cada cidade é considerada um nó, e cada estrada é considerada uma aresta que conecta dois nós.
-2. Em seguida, é preciso estabelecer as distâncias entre cada cidade, o que pode ser feito por meio de uma matriz de adjacência. Cada posição dessa matriz representa a distância entre a cidade i e a cidade j. Além disso, é importante definir uma heurística que estime a distância restante do nó atual até o nó de destino. Uma heurística comum é a distância em linha reta entre as duas cidades, que é considerada admissível, pois nunca superestima a distância real entre elas.
-3. Para resolver o problema do mapa da Romênia com o algoritmo A*, é necessário começar pelo nó de origem e utilizar a heurística para estimar a distância restante até o nó de destino. Em seguida, é preciso selecionar o nó que possui o menor custo total, que é a soma da distância já percorrida e da estimativa da distância restante, e expandir seus vizinhos. Esse processo deve ser repetido até que o nó de destino seja alcançado, sempre selecionando e expandindo os nós com menor custo total.
-4. Para obter o caminho mais curto do nó de origem ao nó de destino no problema do mapa da Romênia utilizando o algoritmo A*, é preciso armazenar o nó anterior de cada nó visitado durante a busca. Com essa informação, é possível percorrer de volta do nó de destino até o nó de origem e determinar o caminho mais curto. Esse processo é realizado utilizando a sequência de nós visitados e seus respectivos nós anteriores, que permitem traçar o caminho completo a ser percorrido.
+## Descrição da Abordagem
 
-O código-fonte para a solução e seus arquivos está em [click here](../exercicio2Aestrela/)
+1. **Obtenção dos Dados Geográficos:**
+   - As coordenadas geográficas da cidade foram especificadas através do Google Maps, definindo o centro da área de interesse.
+   - Um raio de busca foi definido para limitar a área de interesse ao redor do centro especificado, neste caso foi do Blodo 5 da UFRR.
+   - Utilizando a biblioteca OSMnx, foi baixado o grafo de ruas da região dentro do raio especificado, considerando apenas as vias para veículos.
 
-## Acerca do código apresentado acima
+2. **Definição das Origem e Destino:**
+   - A origem foi definida como as coordenadas da "Casa".
+   - O destino foi definido como as coordenadas do "Bloco V, CCT".
 
-- O código é uma implementação do algoritmo A* para encontrar o caminho mais curto em um grafo com pesos.
-- A função heuristic é utilizada para estimar a distância restante até o nó de destino, e é passada como parâmetro para a função a_star.
-- A função a_star implementa o algoritmo em si, utilizando uma fila de prioridade para selecionar o nó com o menor custo total e explorando seus vizinhos. A cada passo, atualiza o custo total até o nó atual e o nó anterior de cada nó visitado para rastrear o caminho mais curto. Quando o nó de destino é alcançado, rastreia o caminho mais curto e retorna.
-- A função main lê o mapa e as heurísticas dos arquivos de texto, define o nó inicial e o nó de destino, executa o algoritmo A* e exibe o caminho mais curto e o custo total.
+3. **Encontrando os Nós Mais Próximos:**
+   - Utilizando a função `nearest_nodes` da biblioteca OSMnx, os nós mais próximos no grafo foram identificados para as coordenadas de origem e destino.
+
+4. **Aplicação do Algoritmo A*:**
+   - Utilizando a biblioteca NetworkX, o algoritmo A* foi aplicado para encontrar o menor caminho entre os nós de origem e destino no grafo.
+   - O peso considerado para calcular o caminho mais curto foi o comprimento das arestas do grafo, representando a distância entre os pontos.
+
+5. **Visualização dos Resultados:**
+   - O menor caminho encontrado foi plotado sobre o grafo de ruas para visualização.
+   - O caminho foi destacado em um gráfico, enquanto os nós e as arestas foram ocultados para maior clareza.
+
+---
+
+## Resultados Obtidos
+
+O menor caminho encontrado entre a origem (Casa) e o destino (Bloco V, CCT) é representado por uma série de segmentos de ruas, conforme visualizado no gráfico.
+
+---
+
+## Análise dos Resultados
+
+A aplicação do algoritmo A* mostrou-se eficaz na identificação do menor caminho entre a origem e o destino no grafo de ruas da cidade. A rota resultante parece ser uma escolha razoável, considerando o critério de distância. No entanto, é importante notar que o menor caminho pode não ser o mais rápido em termos de tempo de viagem, uma vez que fatores como tráfego e restrições de direção não são considerados nesta abordagem. Portanto, para uma aplicação prática, podem ser necessárias considerações adicionais.
+
+Matematicamente dizemos que o menor caminho entre dois pontos, é uma linha reta. Neste caso traçar uma linha reta ou fazer várias curvas em direção ao destino seria a melhor escolha. Porém matematicamente falando, quanto mais curvas mais longe seria. Então durante os nossos testes, testamos vários locais e em todos eles foram traçados o máximo de linhas retas possíveis.
+
+---
+
+## Conclusão
+
+A utilização do algoritmo A* em conjunto com as bibliotecas Python NetworkX, Matplotlib e OSMnx permitiu encontrar de forma eficiente o menor caminho entre a origem (Casa) e o destino (Bloco V, CCT) dentro da cidade. Este relatório fornece uma visão geral da abordagem adotada, dos resultados obtidos e de uma análise crítica desses resultados.
+
+---
+
+### Informações Adicionais
+
+- As coordenadas geográficas para os endereços são:
+  - **Casa (Rua Linha Fina, 441, Jóquei Clube, Boa Vista - RR, 69313-038):**
+    - Latitude: 2.806972
+    - Longitude: -60.717536
+  - **Bloco V (Av. Cap. Ene Garcês, 2413, Bloco V, Aeroporto, Boa Vista - RR, 69310-000):**
+    - Latitude: 2.835091
+    - Longitude: -60.694924
+
+- Documentação da biblioteca OSMnx: [Link](https://osmnx.readthedocs.io/)
+- Documentação da biblioteca NetworkX: [Link](https://networkx.org/documentation/)
+- Documentação da API do Google Maps: [Link](https://developers.google.com/maps/documentation)
+- Livro: "Artificial Intelligence: A Modern Approach" de Stuart Russell e Peter Norvig (Capítulo 3).
